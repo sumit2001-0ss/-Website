@@ -1,5 +1,5 @@
 
-        // Mobile menu toggle
+      
         const mobileMenu = document.querySelector('.mobile-menu');
         const navLinks = document.querySelector('.nav-links');
         
@@ -39,16 +39,13 @@
             }
         }
         
-        // ========================================
-        // WORKING CONTACT FORM - JavaScript
-        // ========================================
         
         const contactForm = document.getElementById('contactForm');
         const submitBtn = document.getElementById('submitBtn');
         const formMessage = document.getElementById('formMessage');
         const messageText = document.getElementById('messageText');
         
-        // Form validation
+
         function validateEmail(email) {
             const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return re.test(email);
@@ -71,8 +68,7 @@
             const email = document.getElementById('email').value.trim();
             const subject = document.getElementById('subject').value.trim();
             const message = document.getElementById('message').value.trim();
-            
-            // Name validation
+  
             if (name === '') {
                 showError('name', 'nameError');
                 isValid = false;
@@ -81,7 +77,7 @@
                 document.getElementById('name').classList.add('success');
             }
             
-            // Email validation
+         
             if (email === '' || !validateEmail(email)) {
                 showError('email', 'emailError');
                 isValid = false;
@@ -90,7 +86,7 @@
                 document.getElementById('email').classList.add('success');
             }
             
-            // Subject validation
+            
             if (subject === '') {
                 showError('subject', 'subjectError');
                 isValid = false;
@@ -99,7 +95,7 @@
                 document.getElementById('subject').classList.add('success');
             }
             
-            // Message validation
+            
             if (message === '') {
                 showError('message', 'messageError');
                 isValid = false;
@@ -111,7 +107,7 @@
             return isValid;
         }
         
-        // Form submission with AJAX
+   
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -119,7 +115,7 @@
                 return;
             }
             
-            // Show loading state
+        
             submitBtn.classList.add('btn-loading');
             submitBtn.disabled = true;
             
@@ -140,10 +136,10 @@
                     messageText.textContent = 'Thank you! Your message has been sent successfully. I will get back to you soon!';
                     formMessage.style.display = 'flex';
                     
-                    // Reset form
+                   
                     contactForm.reset();
                     
-                    // Remove success classes
+                 
                     document.querySelectorAll('.form-control').forEach(input => {
                         input.classList.remove('success');
                     });
@@ -151,24 +147,23 @@
                     throw new Error(data.message || 'Something went wrong');
                 }
             } catch (error) {
-                // Error
+           
                 formMessage.className = 'form-message error';
                 formMessage.querySelector('i').className = 'fas fa-exclamation-circle';
                 messageText.textContent = 'Oops! Something went wrong. Please try again or contact me directly via email.';
                 formMessage.style.display = 'flex';
             } finally {
-                // Remove loading state
+       
                 submitBtn.classList.remove('btn-loading');
                 submitBtn.disabled = false;
-                
-                // Hide message after 8 seconds
+            
                 setTimeout(() => {
                     formMessage.style.display = 'none';
                 }, 8000);
             }
         });
         
-        // Real-time validation
+
         document.getElementById('name').addEventListener('blur', function() {
             if (this.value.trim() !== '') {
                 hideError('name', 'nameError');
@@ -197,7 +192,7 @@
             }
         });
         
-        // Initialize
+
         window.addEventListener('DOMContentLoaded', () => {
             checkAboutSection();
         });
@@ -206,7 +201,7 @@
             checkAboutSection();
         });
         
-        // Smooth scroll
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -285,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Counter Animation for Stats
+
     const statNumbers = document.querySelectorAll('.stat-number');
     
     const animateCounter = (element) => {
@@ -307,7 +302,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCounter();
     };
     
-    // Intersection Observer for counter animation
+
     const statsObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -322,3 +317,4 @@ document.addEventListener('DOMContentLoaded', function() {
         statsObserver.observe(statsSection);
     }
 });
+
